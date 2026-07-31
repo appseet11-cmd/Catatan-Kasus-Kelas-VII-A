@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Format Catatan Kasus/Anekdot Bimbingan Konseling SMP 56</title>
+<style>
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #27ae60;
+  --background-color: #f4f7f9;
+  --card-bg-color: #ffffff;
+  --text-color: #333333;
+  --border-color: #dcdfe6;
+  --hover-color: #eaf2f8;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--text-color); background-color: var(--background-color); padding: 20px; }
+.container { max-width: 1400px; margin: 0 auto; background-color: var(--card-bg-color); border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.12); overflow: hidden; }
+header { background: linear-gradient(135deg, var(--primary-color), #1a2530); color: white; padding: 2rem; text-align: center; }
+h1 { font-size: 2.2rem; margin-bottom: 0.5rem; letter-spacing: -0.5px; }
+.subtitle { font-size: 1.1rem; opacity: 0.9; }
+.info-box { background-color: #e3f2fd; border-left: 5px solid var(--secondary-color); padding: 1.2rem; margin-bottom: 2rem; border-radius: 0 8px 8px 0; }
+.info-box p strong { color: var(--primary-color); }
+.info-box.rule-new { background-color: #fef9e7; border-left: 5px solid #f1c40f; }
+.info-box.rule-new p strong { color: #b7791f; }
+.info-box.rule-new ul { margin-top: 10px; padding-left: 1.5rem; }
+.info-box.rule-new li { margin-bottom: 6px; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 12px; padding: 1rem; background-color: #f8fafc; border-radius: 8px; border: 1px solid var(--border-color); margin-bottom: 1.5rem; align-items: center;}
+.toolbar button { border: none; cursor: pointer; font-size: 1rem; font-weight: 600; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: all 0.2s ease-in-out; display: flex; align-items: center; justify-content: center; padding: 0.6rem 1rem; }
+.toolbar button:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+.add-row-button, .remove-row-button, .reset-button { width: 44px; height: 44px; border-radius: 50%; }
+.add-row-button { background-color: #654321; color: white; }
+.remove-row-button { background-color: #3e0ea5; color: white; }
+.reset-button { background-color: #f1c40f; color: #2c3e50; }
+.reset-button:hover { background-color: #d4ac0d; color: #2c3e50; }
+.nav-button { background-color: var(--accent-color); color: white; padding: 0.7rem 1.2rem; }
+.nav-button:hover { background-color: #219653; }
+.save-button { background-color: #e67e22; color: white; }
+.save-button:hover { background-color: #d35400; }
+.gurubk-button { background: linear-gradient(135deg, #16a085, #1abc9c); color: white; padding: 0.7rem 1.3rem; gap: 6px; }
+.gurubk-button:hover { background: linear-gradient(135deg, #138a72, #16a085); }
+.home-button {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 0.7rem 1.3rem;
+  gap: 6px;
+  margin-right: auto;
+}
+.home-button:hover {
+  background: linear-gradient(135deg, #5568d3, #653a8a);
+  transform: translateY(-2px);
+}
+.gurubk-panel { display: none; background: linear-gradient(135deg, #ecf0f1, #ffffff); border: 2px solid #16a085; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 15px rgba(22, 160, 133, 0.15); }
+.gurubk-panel.active { display: block; }
+.gurubk-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 2px solid #16a085; }
+.gurubk-header h2 { color: #16a085; font-size: 1.3rem; display: flex; align-items: center; gap: 8px; }
+.gurubk-header .badge { background: #16a085; color: white; font-size: 0.75rem; padding: 3px 10px; border-radius: 12px; font-weight: 600; }
+.logout-button { background: #e74c3c; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s; }
+.logout-button:hover { background: #c0392b; transform: translateY(-1px); }
+.gurubk-controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-end; margin-bottom: 1rem; background: white; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); }
+.gurubk-controls .field { flex: 1; min-width: 220px; }
+.gurubk-controls label { display: block; font-weight: 600; color: var(--primary-color); margin-bottom: 6px; font-size: 0.9rem; }
+.gurubk-controls input[type="text"] { width: 100%; padding: 0.6rem; border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.95rem; }
+.gurubk-controls input[type="file"] { width: 100%; padding: 0.4rem; border: 1px dashed var(--border-color); border-radius: 6px; font-size: 0.85rem; background: #fdfdfd; }
+.gurubk-controls input:focus { outline: none; border-color: #16a085; box-shadow: 0 0 0 3px rgba(22, 160, 133, 0.15); }
+.generate-btn { background: #16a085; color: white; border: none; padding: 0.7rem 1.3rem; border-radius: 6px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: all 0.2s; }
+.generate-btn:hover { background: #138a72; }
+.generate-btn:disabled { background: #95a5a6; cursor: not-allowed; }
+.logo-manager { background: white; border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
+.logo-manager h4 { color: #16a085; margin-bottom: 0.8rem; font-size: 1rem; display: flex; align-items: center; gap: 6px; }
+.logo-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 10px; padding: 8px; background: #f8fafc; border-radius: 6px; }
+.logo-row .logo-label { font-weight: 600; color: var(--primary-color); min-width: 110px; font-size: 0.9rem; }
+.logo-row input[type="file"] { flex: 1; min-width: 180px; }
+.logo-btn { padding: 0.5rem 1rem; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.85rem; transition: all 0.2s; display: inline-flex; align-items: center; gap: 5px; }
+.logo-btn-save { background: #16a085; color: white; }
+.logo-btn-save:hover { background: #138a72; }
+.logo-btn-delete { background: #e74c3c; color: white; }
+.logo-btn-delete:hover { background: #c0392b; }
+.logo-btn:disabled { background: #95a5a6; cursor: not-allowed; }
+.logo-status { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; }
+.logo-status.saved { background: #d4edda; color: #155724; }
+.logo-status.empty { background: #f8d7da; color: #721c24; }
+.pdf-viewer-container { display: none; background: white; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden; margin-top: 1rem; }
+.pdf-viewer-container.active { display: block; }
+.pdf-viewer-header { background: #16a085; color: white; padding: 0.8rem 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+.pdf-viewer-header h3 { font-size: 1rem; display: flex; align-items: center; gap: 8px; }
+.pdf-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.pdf-actions button { background: white; color: #16a085; border: none; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 0.9rem; transition: all 0.2s; }
+.pdf-actions button:hover { background: #ecf0f1; transform: translateY(-1px); }
+.pdf-actions .btn-download { background: #2c3e50; color: white; }
+.pdf-actions .btn-download:hover { background: #1a2530; }
+#pdfViewer { width: 100%; height: 700px; border: none; background: #525659; }
+.pdf-info { padding: 1rem; background: #f8fafc; border-top: 1px solid var(--border-color); font-size: 0.9rem; color: #555; }
+.pdf-info strong { color: var(--primary-color); }
+.pdf-source-badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; margin-left: 8px; vertical-align: middle; }
+.pdf-source-badge.baru { background: #e67e22; color: white; }
+.modal-gurubk .modal-box { border-top: 5px solid #16a085; }
+.modal-gurubk .modal-box h2 { color: #16a085; }
+.modal-gurubk .btn-login { background: #16a085; color: white; }
+.modal-gurubk .btn-login:hover { background: #138a72; }
+.password-wrapper { position: relative; margin-bottom: 1.5rem; }
+.password-wrapper input { width: 100%; padding: 0.8rem 2.8rem 0.8rem 0.8rem; border: 1px solid var(--border-color); border-radius: 6px; font-size: 1rem; }
+.password-wrapper input:focus { outline: none; border-color: #16a085; box-shadow: 0 0 0 3px rgba(22, 160, 133, 0.15); }
+.toggle-password { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #7f8c8d; font-size: 1.1rem; padding: 4px; }
+.toggle-password:hover { color: #16a085; }
+.password-hint { background:#fff3cd; border-left:4px solid #f1c40f; padding:10px 12px; border-radius:4px; margin-bottom:1.2rem; font-size:0.85rem; color:#856404; }
+.password-hint strong { color: #856404; }
+.table-container { overflow-x: auto; border: 1px solid var(--border-color); border-radius: 8px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); margin-bottom: 1.5rem; }
+table { width: 100%; min-width: 1400px; border-collapse: collapse; }
+th, td { border: 1px solid var(--border-color); padding: 0.9rem 1.2rem; text-align: left; vertical-align: top; }
+th { background-color: #95a5a6; color: white; position: sticky; top: 0; font-weight: 600; font-size: 11pt; text-transform: uppercase; letter-spacing: 0.5px; }
+td { font-size: 0.95rem; }
+tr:nth-child(even) { background-color: #f8fafc; }
+tr:hover { background-color: var(--hover-color); }
+input, select, textarea { width: 100%; padding: 0.6rem; border: 1px solid var(--border-color); border-radius: 4px; font-family: inherit; font-size: 0.9rem; }
+textarea { resize: vertical; min-height: 60px; }
+.whiteboard-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px); z-index: 2000; justify-content: center; align-items: center; animation: fadeIn 0.2s ease-out; }
+.whiteboard-overlay.active { display: flex; }
+.whiteboard-modal { background: white; width: 90%; max-width: 800px; border-radius: 16px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); overflow: hidden; display: flex; flex-direction: column; transform: scale(0.95); animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+.whiteboard-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.whiteboard-header h3 { font-size: 1.2rem; font-weight: 600; }
+.whiteboard-header span { font-size: 0.8rem; opacity: 0.8; }
+.whiteboard-body { padding: 1.5rem; background: #fff; }
+.whiteboard-input { width: 100%; min-height: 200px; padding: 1rem; font-size: 1.2rem; border: 2px solid #e2e8f0; border-radius: 8px; font-family: 'Segoe UI', sans-serif; resize: vertical; transition: border-color 0.2s; }
+.whiteboard-input:focus { outline: none; border-color: #764ba2; }
+.whiteboard-footer { padding: 1rem 1.5rem; background: #f8fafc; border-top: 1px solid #e2e8f0; display: flex; justify-content: flex-end; gap: 10px; }
+.wb-btn { padding: 0.6rem 1.2rem; border-radius: 6px; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+.wb-btn-save { background: #27ae60; color: white; }
+.wb-btn-save:hover { background: #219150; }
+.wb-btn-cancel { background: #95a5a6; color: white; }
+.wb-btn-cancel:hover { background: #7f8c8d; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes popIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center; }
+.modal-overlay.active { display: flex; }
+.modal-box { background: white; border-radius: 12px; padding: 2rem; width: 90%; max-width: 500px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+.modal-box h2 { color: var(--primary-color); margin-bottom: 1rem; font-size: 1.4rem; }
+.modal-box p { color: #666; margin-bottom: 1.5rem; font-size: 0.95rem; }
+.modal-box label { display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--primary-color); }
+.modal-box input { margin-bottom: 1.5rem; font-size: 1rem; padding: 0.8rem; }
+.modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
+.modal-actions button { padding: 0.7rem 1.5rem; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.95rem; }
+.btn-cancel { background: #95a5a6; color: white; }
+.btn-cancel:hover { background: #7f8c8d; }
+.status-toast { position: fixed; top: 20px; right: 20px; padding: 14px 22px; border-radius: 8px; color: white; font-weight: 600; z-index: 3000; box-shadow: 0 4px 12px rgba(0,0,0,0.2); opacity: 0; transform: translateX(400px); transition: all 0.3s ease; max-width: 400px; }
+.status-toast.show { opacity: 1; transform: translateX(0); }
+.status-toast.success { background: #27ae60; }
+.status-toast.error { background: #e74c3c; }
+.status-toast.info { background: #3498db; }
+footer { text-align: center; padding: 1.5rem; color: #7f8c8d; font-size: 0.9rem; border-top: 1px solid var(--border-color); margin-top: 1rem; }
+@media (max-width: 768px) {
+  .toolbar { flex-direction: column; align-items: stretch; }
+  .save-button { margin-left: 0; }
+  .add-row-button, .remove-row-button, .reset-button { align-self: flex-start; width: 60px; height: 60px; }
+  .home-button { margin-right: 0; width: 100%; }
+  h1 { font-size: 1.8rem; }
+  .gurubk-controls { flex-direction: column; }
+  .pdf-viewer-header { flex-direction: column; align-items: flex-start; }
+  #pdfViewer { height: 500px; }
+  .whiteboard-modal { width: 95%; }
+  .logo-row { flex-direction: column; align-items: stretch; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>Format Catatan Kasus/Anekdot</h1>
+<p class="subtitle">Bimbingan Konseling SMP 56</p>
+</header>
+<div class="info-box rule-new">
+<p><strong>📌 Aturan Sistem — Satu Laporan PDF per Siswa + Arsip Otomatis:</strong></p>
+<ul>
+<li>Setiap siswa (berdasarkan NIS/NISN) hanya memiliki <strong>SATU file PDF rekap</strong> yang berisi seluruh kasusnya.</li>
+<li><strong>NIS dan NISN:</strong> Diisi terpisah. NIS/NISN sebagai kunci unik untuk mengidentifikasi siswa.</li>
+<li><strong>Nama Siswa & Orang Tua:</strong> Menggunakan data yang PERTAMA KALI diinput.</li>
+<li><strong>Baris:</strong> Gunakan tombol <strong>(+)</strong> untuk menambah baris, <strong>(-)</strong> untuk menghapus baris terakhir, dan <strong>🔄</strong> untuk mereset semua isian tabel.</li>
+<li><strong>Kelas:</strong> Pilih kelas siswa dari menu dropdown (VII-A s.d. VII-J).</li>
+<li><strong>💾 Simpan ke Spreadsheet:</strong> Data akan terakumulasi. Reset tabel TIDAK menghapus data di Spreadsheet.</li>
+<li><strong>🔑 Password Guru BK:</strong> Bisa diedit langsung di Spreadsheet → sheet <strong>"Pengaturan"</strong> → baris <strong>"passwordGuruBK"</strong> → edit kolom B.</li>
+<li><strong>🖼️ Logo:</strong> Upload logo sekali via panel Guru BK → logo tersimpan permanen di Spreadsheet & otomatis dipakai setiap generate PDF.</li>
+<li><strong>🏠 Tombol Kembali:</strong> Gunakan tombol <strong>"🏠 Kembali"</strong> di toolbar untuk kembali ke halaman induk.</li>
+</ul>
+</div>
+<div class="toolbar">
+<button class="home-button" title="Kembali ke Halaman Induk" onclick="goBackHome()">🏠 Kembali</button>
+<button class="add-row-button" title="Tambah Baris Data" onclick="addRow()">+</button>
+<button class="remove-row-button" title="Hapus Baris Terakhir" onclick="removeRow()">-</button>
+<button class="reset-button" title="Reset Semua Isian Tabel" onclick="resetTable()">🔄</button>
+<button class="gurubk-button" title="Mode Guru BK - Lihat Rekap PDF Siswa" onclick="openGuruBKLogin()">👨‍🏫 Guru BK</button>
+<button class="nav-button save-button" onclick="saveData()">💾 Simpan ke Spreadsheet</button>
+</div>
+
+<div class="gurubk-panel" id="gurubkPanel">
+<div class="gurubk-header">
+<h2>👨‍🏫 Mode Guru BK <span class="badge">AKTIF</span></h2>
+<button class="logout-button" onclick="logoutGuruBK()">🚪 Logout</button>
+</div>
+
+<div class="logo-manager">
+<h4>🖼️ Manajemen Logo (Tersimpan Permanen di Spreadsheet)</h4>
+<div class="logo-row">
+<span class="logo-label">Logo Kiri:</span>
+<input type="file" id="inputLogoKiriSave" accept="image/*">
+<button class="logo-btn logo-btn-save" onclick="uploadLogo('kiri')">💾 Simpan</button>
+<button class="logo-btn logo-btn-delete" onclick="deleteLogo('kiri')">🗑️ Hapus</button>
+<span class="logo-status empty" id="statusLogoKiri">❌ Belum ada logo</span>
+</div>
+<div class="logo-row">
+<span class="logo-label">Logo Kanan:</span>
+<input type="file" id="inputLogoKananSave" accept="image/*">
+<button class="logo-btn logo-btn-save" onclick="uploadLogo('kanan')">💾 Simpan</button>
+<button class="logo-btn logo-btn-delete" onclick="deleteLogo('kanan')">🗑️ Hapus</button>
+<span class="logo-status empty" id="statusLogoKanan">❌ Belum ada logo</span>
+</div>
+<small style="color:#666; display:block; margin-top:5px;">💡 Logo yang sudah disimpan akan <strong>otomatis dipakai</strong> setiap generate PDF.</small>
+</div>
+
+<div class="gurubk-controls">
+<div class="field">
+<label for="inputNISGuruBK">🔍 NIS Siswa:</label>
+<input type="text" id="inputNISGuruBK" placeholder="Contoh: 12345" autocomplete="off">
+</div>
+<div class="field">
+<label for="inputNISNGuruBK">🔍 NISN Siswa:</label>
+<input type="text" id="inputNISNGuruBK" placeholder="Contoh: 0012345678" autocomplete="off">
+</div>
+<div class="field">
+<label for="inputLogoHeaderKiri">🖼️ Logo Kiri (Override):</label>
+<input type="file" id="inputLogoHeaderKiri" accept="image/*">
+<small style="color:#666; font-size:0.8rem;">Opsional. Mengabaikan logo tersimpan.</small>
+</div>
+<div class="field">
+<label for="inputLogoHeaderKanan">🖼️ Logo Kanan (Override):</label>
+<input type="file" id="inputLogoHeaderKanan" accept="image/*">
+<small style="color:#666; font-size:0.8rem;">Opsional. Mengabaikan logo tersimpan.</small>
+</div>
+<button class="generate-btn" id="btnGenerateGuruBK" onclick="generatePDFGuruBK()">📄 Tampilkan Laporan PDF</button>
+</div>
+<div class="pdf-viewer-container" id="pdfViewerContainer">
+<div class="pdf-viewer-header">
+<h3>📄 <span id="pdfTitle">Laporan Rekapitulasi Pelanggaran Siswa</span></h3>
+<div class="pdf-actions">
+<button onclick="printPDF()" title="Cetak PDF">🖨️ Cetak</button>
+<button onclick="openPDFNewTab()" title="Buka di Tab Baru">🔗 Buka Tab Baru</button>
+<button class="btn-download" id="btnDownloadPDF" onclick="downloadPDF()" title="Download PDF">📥 Download</button>
+</div>
+</div>
+<iframe id="pdfViewer" src="" title="PDF Viewer"></iframe>
+<div class="pdf-info" id="pdfInfo"></div>
+</div>
+</div>
+
+<div class="table-container" id="tableContainer">
+<table id="catatanTable">
+<thead>
+<tr>
+<th>No</th><th>Tanggal Kejadian</th><th>NIS</th><th>NISN</th><th>Nama Siswa</th><th>Jenis Kelamin</th>
+<th>Kelas</th><th>Waktu Kejadian</th><th>Tempat Kejadian</th><th>Uraian Kejadian (Fakta)</th>
+<th>Subjek Terlibat</th><th>Analisis Singkat</th><th>Bentuk Penanganan</th>
+<th>Tindak Lanjut</th><th>Catatan Tambahan</th><th>Nama Orang Tua / Wali</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><input type="date"></td>
+<td><input type="text" placeholder="NIS"></td>
+<td><input type="text" placeholder="NISN"></td>
+<td><input type="text" placeholder="Nama Lengkap"></td>
+<td><select><option value="">Pilih</option><option value="L">L</option><option value="P">P</option></select></td>
+<td><select><option value="">Pilih Kelas</option><option value="VII-A">VII-A</option></select></td>
+<td><input type="time"></td>
+<td><input type="text" placeholder="Contoh: Kelas"></td>
+<td><textarea placeholder="Deskripsikan kejadian..."></textarea></td>
+<td><input type="text" placeholder="Nama siswa/guru lain"></td>
+<td><textarea placeholder="Interpretasi awal..."></textarea></td>
+<td><textarea placeholder="Intervensi yang dilakukan..."></textarea></td>
+<td><textarea placeholder="Langkah selanjutnya..."></textarea></td>
+<td><textarea placeholder="Info tambahan..."></textarea></td>
+<td><input type="text" placeholder="Nama Orang Tua / Wali"></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="modal-overlay modal-gurubk" id="gurubkLoginModal">
+<div class="modal-box">
+<h2>🔐 Login Guru BK</h2>
+<p>Masukkan password untuk mengakses mode Guru BK dan melihat laporan rekapitulasi pelanggaran siswa.</p>
+<label for="inputPasswordGuruBK">Password:</label>
+<div class="password-wrapper">
+<input type="password" id="inputPasswordGuruBK" placeholder="Masukkan password" autocomplete="off">
+<button type="button" class="toggle-password" onclick="togglePasswordVisibility()" title="Lihat/Sembunyikan password">👁️</button>
+</div>
+<div class="password-hint">
+<strong>💡 Lupa Password?</strong><br>
+Password dapat diubah kapan saja melalui <strong>Google Spreadsheet</strong> → sheet <strong>"Pengaturan"</strong> → baris <strong>"passwordGuruBK"</strong> → edit kolom B.
+</div>
+<div class="modal-actions">
+<button class="btn-cancel" onclick="closeGuruBKLogin()">Batal</button>
+<button class="btn-login" id="btnLoginGuruBK" onclick="loginGuruBK()">🔓 Login</button>
+</div>
+</div>
+</div>
+
+<div class="whiteboard-overlay" id="whiteboardOverlay">
+<div class="whiteboard-modal">
+<div class="whiteboard-header" onclick="closeWhiteboard()">
+<h3>📝 Papan Tulis</h3>
+<span>Klik header untuk menutup</span>
+</div>
+<div class="whiteboard-body">
+<textarea id="whiteboardInput" class="whiteboard-input" placeholder="Ketik data di sini..."></textarea>
+</div>
+<div class="whiteboard-footer">
+<button class="wb-btn wb-btn-cancel" onclick="closeWhiteboard()">❌ Batal</button>
+<button class="wb-btn wb-btn-save" onclick="saveWhiteboard()">💾 Simpan & Tutup</button>
+</div>
+</div>
+</div>
+
+<footer>
+<p>&copy; 2026 Bimbingan Konseling SMP 56. Platform Administrasi Digital.</p>
+</footer>
+</div>
+
+<div class="status-toast" id="statusToast"></div>
+
+<script>
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzEl1Ggi7PxzoXXnYAyfDdr38sCtfT3zCpH3IURHSqwwiFLR70Yy9insaBFInKR1GeDdQ/exec';
+const HOME_URL = '';
+
+let rowCount = 1;
+let isGuruBKLoggedIn = false;
+let currentPDFUrl = '';
+let currentPDFFileName = '';
+let activeField = null;
+let logoInfo = { kiri: { exists: false }, kanan: { exists: false } };
+
+function showToast(message, type = 'info', duration = 4000) {
+  const toast = document.getElementById('statusToast');
+  toast.textContent = message;
+  toast.className = 'status-toast ' + type + ' show';
+  setTimeout(() => { toast.classList.remove('show'); }, duration);
+}
+
+function getKelasDropdown() {
+  return `<select><option value="">Pilih Kelas</option><option value="VII-A">VII-A</option></select>`;
+}
+
+function addRow() {
+  const tbody = document.querySelector('#catatanTable tbody');
+  rowCount++;
+  const newRow = document.createElement('tr');
+  newRow.innerHTML = `
+    <td>${rowCount}</td>
+    <td><input type="date"></td>
+    <td><input type="text" placeholder="NIS"></td>
+    <td><input type="text" placeholder="NISN"></td>
+    <td><input type="text" placeholder="Nama Lengkap"></td>
+    <td><select><option value="">Pilih</option><option value="L">L</option><option value="P">P</option></select></td>
+    <td>${getKelasDropdown()}</td>
+    <td><input type="time"></td>
+    <td><input type="text" placeholder="Contoh: Kelas"></td>
+    <td><textarea placeholder="Deskripsikan kejadian..."></textarea></td>
+    <td><input type="text" placeholder="Nama siswa/guru lain"></td>
+    <td><textarea placeholder="Interpretasi awal..."></textarea></td>
+    <td><textarea placeholder="Intervensi yang dilakukan..."></textarea></td>
+    <td><textarea placeholder="Langkah selanjutnya..."></textarea></td>
+    <td><textarea placeholder="Info tambahan..."></textarea></td>
+    <td><input type="text" placeholder="Nama Orang Tua / Wali"></td>
+  `;
+  tbody.appendChild(newRow);
+}
+
+function removeRow() {
+  const tbody = document.querySelector('#catatanTable tbody');
+  const rows = tbody.querySelectorAll('tr');
+  if (rows.length > 1) {
+    tbody.removeChild(rows[rows.length - 1]);
+    rowCount--;
+    updateRowNumbers();
+  } else {
+    showToast('Minimal harus ada satu baris data.', 'error');
+  }
+}
+
+function resetTable() {
+  const tbody = document.querySelector('#catatanTable tbody');
+  const rows = tbody.querySelectorAll('tr');
+  let adaIsian = false;
+  rows.forEach(row => {
+    const inputs = row.querySelectorAll('input, textarea');
+    const selects = row.querySelectorAll('select');
+    inputs.forEach(inp => { if (inp.value && inp.value.trim() !== '') adaIsian = true; });
+    selects.forEach(sel => { if (sel.value && sel.value.trim() !== '') adaIsian = true; });
+  });
+  const confirmMsg = adaIsian
+    ? '⚠️ PERINGATAN: Tabel memiliki data yang sudah diisi.\nSemua baris tambahan akan dihapus dan isian akan dikosongkan.\nData yang belum disimpan akan HILANG dari tampilan, TAPI tetap aman di Spreadsheet jika sudah ditekan Simpan.\nYakin ingin mereset tabel?'
+    : 'Reset tabel ke kondisi awal (1 baris kosong)?';
+  if (!confirm(confirmMsg)) return;
+  while (tbody.rows.length > 1) { tbody.deleteRow(tbody.rows.length - 1); }
+  const firstRow = tbody.rows[0];
+  firstRow.querySelectorAll('input, textarea').forEach(inp => { inp.value = ''; });
+  firstRow.querySelectorAll('select').forEach(sel => { sel.selectedIndex = 0; });
+  rowCount = 1;
+  firstRow.cells[0].textContent = '1';
+  showToast('✅ Tabel berhasil direset ke kondisi awal.', 'success', 3000);
+}
+
+function updateRowNumbers() {
+  const rows = document.querySelectorAll('#catatanTable tbody tr');
+  rows.forEach((row, index) => { row.cells[0].textContent = index + 1; });
+}
+
+function saveData() {
+  const tbody = document.querySelector('#catatanTable tbody');
+  const rows = tbody.querySelectorAll('tr');
+  const dataArray = [];
+  const invalidRows = [];
+
+  rows.forEach((row, idx) => {
+    const cells = row.querySelectorAll('td');
+    const nis = cells[2].querySelector('input').value.trim();
+    const nisn = cells[3].querySelector('input').value.trim();
+    const namaSiswa = cells[4].querySelector('input').value.trim();
+
+    if (!namaSiswa && !nis && !nisn) return;
+    if (!nis && !nisn) { invalidRows.push(idx + 1); return; }
+
+    dataArray.push({
+      no: cells[0].textContent,
+      tanggal: cells[1].querySelector('input').value,
+      nis: nis, nisn: nisn,
+      namaSiswa: namaSiswa,
+      jenisKelamin: cells[5].querySelector('select').value,
+      kelas: cells[6].querySelector('select').value,
+      waktu: cells[7].querySelector('input').value,
+      tempat: cells[8].querySelector('input').value,
+      uraian: cells[9].querySelector('textarea').value,
+      subjek: cells[10].querySelector('input').value,
+      analisis: cells[11].querySelector('textarea').value,
+      penanganan: cells[12].querySelector('textarea').value,
+      tindakLanjut: cells[13].querySelector('textarea').value,
+      catatan: cells[14].querySelector('textarea').value,
+      namaOrtu: cells[15].querySelector('input').value
+    });
+  });
+
+  if (invalidRows.length > 0) {
+    showToast(`⚠️ Baris ${invalidRows.join(', ')} harus memiliki NIS atau NISN.`, 'error', 5000);
+    return;
+  }
+  if (dataArray.length === 0) { showToast('Tidak ada data yang valid untuk disimpan.', 'error'); return; }
+
+  const confirmMsg = `Akan menyimpan ${dataArray.length} kasus.\n⚠️ ATURAN SISTEM:\n• Data akan ditambahkan ke Spreadsheet (Akumulatif).\n• Kasus lama TIDAK dihapus, melainkan tetap ada di Sheet "Riwayat Kasus".\n• PDF Rekap akan diupdate berisi SEMUA kasus (Lama + Baru).\n• Nama Siswa & Orang Tua menggunakan data PERTAMA KALI diinput.\nLanjutkan?`;
+  if (!confirm(confirmMsg)) return;
+
+  const btn = document.querySelector('.save-button');
+  const originalText = btn.innerHTML;
+  btn.innerHTML = '⏳ Menyimpan...';
+  btn.disabled = true;
+
+  fetch(WEB_APP_URL, {
+    method: 'POST',
+    mode: 'cors',
+    body: JSON.stringify({ action: 'save', data: dataArray })
+  })
+  .then(res => res.text())
+  .then(text => {
+    let data;
+    try {
+      const cleanText = text.trim();
+      data = JSON.parse(cleanText);
+    } catch (e) {
+      console.error("Raw Response:", text);
+      throw new Error('Respon server tidak valid (bukan JSON). Cek Console.');
+    }
+
+    if (data.status === 'success') {
+      let msg = '✅ DATA SUDAH TERSIMPAN\n\n';
+      if (data.summary && Array.isArray(data.summary)) {
+        data.summary.forEach(s => {
+          msg += `👤 ${s.namaSiswa}`;
+          if (s.nis) msg += ` (NIS: ${s.nis})`;
+          else if (s.nisn) msg += ` (NISN: ${s.nisn})`;
+          msg += `:\n`;
+          msg += `   • Total kasus dalam PDF rekap: ${s.totalKasus}\n`;
+        });
+      }
+      showToast('✅ Data Sudah Tersimpan!', 'success');
+      alert(msg);
+    } else {
+      showToast('❌ ' + (data.message || 'Gagal menyimpan data'), 'error', 5000);
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    showToast('❌ Gagal terhubung: ' + error.message, 'error', 5000);
+  })
+  .finally(() => {
+    btn.innerHTML = originalText;
+    btn.disabled = false;
+  });
+}
+
+function goBackHome() {
+  if (HOME_URL && HOME_URL.trim() !== '') {
+    try {
+      if (window.self !== window.top) {
+        window.top.location.href = HOME_URL;
+      } else {
+        window.location.href = HOME_URL;
+      }
+    } catch (e) {
+      console.warn('Navigasi top diblokir, mencoba fallback...', e);
+      window.open(HOME_URL, '_top');
+    }
+  } else {
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      showToast('⚠️ Tidak ada riwayat halaman. Silakan konfigurasi HOME_URL di script.', 'error', 5000);
+    }
+  }
+}
+
+document.getElementById('tableContainer').addEventListener('click', function(e) {
+  const target = e.target;
+  if (target.tagName === 'TEXTAREA') openWhiteboard(target);
+  else if (target.tagName === 'INPUT' && target.type === 'text') openWhiteboard(target);
+});
+
+function openWhiteboard(fieldElement) {
+  activeField = fieldElement;
+  const overlay = document.getElementById('whiteboardOverlay');
+  const input = document.getElementById('whiteboardInput');
+  const headerTitle = document.querySelector('.whiteboard-header h3');
+  let colName = "Field";
+  const cell = fieldElement.closest('td');
+  if (cell) {
+    const colIndex = cell.cellIndex;
+    const headerCell = document.querySelector(`#catatanTable thead th:nth-child(${colIndex + 1})`);
+    if (headerCell) colName = headerCell.textContent;
+  }
+  headerTitle.textContent = `📝 ${colName}`;
+  input.value = fieldElement.value;
+  overlay.classList.add('active');
+  setTimeout(() => { input.focus(); input.scrollTop = input.scrollHeight; }, 100);
+}
+
+function closeWhiteboard() {
+  document.getElementById('whiteboardOverlay').classList.remove('active');
+  activeField = null;
+}
+
+function saveWhiteboard() {
+  if (activeField) {
+    const newValue = document.getElementById('whiteboardInput').value;
+    activeField.value = newValue;
+    activeField.dispatchEvent(new Event('change'));
+    activeField.dispatchEvent(new Event('input'));
+  }
+  closeWhiteboard();
+}
+
+document.getElementById('whiteboardOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeWhiteboard();
+});
+
+function openGuruBKLogin() {
+  if (isGuruBKLoggedIn) {
+    document.getElementById('gurubkPanel').classList.add('active');
+    document.getElementById('gurubkPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    loadLogoInfo();
+    return;
+  }
+  document.getElementById('gurubkLoginModal').classList.add('active');
+  document.getElementById('inputPasswordGuruBK').value = '';
+  setTimeout(() => document.getElementById('inputPasswordGuruBK').focus(), 100);
+}
+
+function closeGuruBKLogin() {
+  document.getElementById('gurubkLoginModal').classList.remove('active');
+  document.getElementById('inputPasswordGuruBK').value = '';
+}
+
+function togglePasswordVisibility() {
+  const inp = document.getElementById('inputPasswordGuruBK');
+  const btn = inp.nextElementSibling;
+  if (inp.type === 'password') { inp.type = 'text'; btn.textContent = '🙈'; }
+  else { inp.type = 'password'; btn.textContent = '👁️'; }
+}
+
+function loginGuruBK() {
+  const pwd = document.getElementById('inputPasswordGuruBK').value;
+  if (!pwd) { showToast('⚠️ Password tidak boleh kosong.', 'error'); return; }
+  const btn = document.getElementById('btnLoginGuruBK');
+  btn.disabled = true;
+  btn.innerHTML = '⏳ Memverifikasi...';
+
+  fetch(WEB_APP_URL, {
+    method: 'POST',
+    mode: 'cors',
+    body: JSON.stringify({ action: 'login', password: pwd })
+  })
+  .then(res => res.text())
+  .then(text => {
+    const data = JSON.parse(text);
+    if (data.status === 'success') {
+      isGuruBKLoggedIn = true;
+      closeGuruBKLogin();
+      document.getElementById('gurubkPanel').classList.add('active');
+      document.getElementById('gurubkPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      showToast('✅ Login berhasil! Selamat datang, Guru BK.', 'success', 3000);
+      loadLogoInfo();
+    } else {
+      showToast('❌ Password salah!', 'error', 4000);
+      document.getElementById('inputPasswordGuruBK').value = '';
+      document.getElementById('inputPasswordGuruBK').focus();
+    }
+  })
+  .catch(() => showToast('❌ Gagal terhubung ke server.', 'error'))
+  .finally(() => { btn.disabled = false; btn.innerHTML = '🔓 Login'; });
+}
+
+function logoutGuruBK() {
+  if (!confirm('Yakin ingin logout dari Mode Guru BK?\nPanel akan disembunyikan dan sesi login direset.')) return;
+  isGuruBKLoggedIn = false;
+  currentPDFUrl = '';
+  currentPDFFileName = '';
+  document.getElementById('gurubkPanel').classList.remove('active');
+  document.getElementById('pdfViewerContainer').classList.remove('active');
+  document.getElementById('pdfViewer').src = '';
+  document.getElementById('inputNISGuruBK').value = '';
+  document.getElementById('inputNISNGuruBK').value = '';
+  document.getElementById('pdfInfo').innerHTML = '';
+  showToast('🚪 Anda telah logout dari Mode Guru BK.', 'info', 3000);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function loadLogoInfo() {
+  fetch(WEB_APP_URL, {
+    method: 'POST',
+    mode: 'cors',
+    body: JSON.stringify({ action: 'getLogoInfo' })
+  })
+  .then(res => res.text())
+  .then(text => {
+    const data = JSON.parse(text);
+    if (data.status === 'success') {
+      logoInfo = data.logoInfo;
+      updateLogoStatusUI();
+    }
+  })
+  .catch(err => console.error('Gagal load logo info:', err));
+}
+
+function updateLogoStatusUI() {
+  const statusKiri = document.getElementById('statusLogoKiri');
+  const statusKanan = document.getElementById('statusLogoKanan');
+
+  if (logoInfo.kiri && logoInfo.kiri.exists) {
+    statusKiri.className = 'logo-status saved';
+    statusKiri.innerHTML = `✅ Tersimpan: ${logoInfo.kiri.fileName}`;
+  } else {
+    statusKiri.className = 'logo-status empty';
+    statusKiri.innerHTML = '❌ Belum ada logo';
+  }
+
+  if (logoInfo.kanan && logoInfo.kanan.exists) {
+    statusKanan.className = 'logo-status saved';
+    statusKanan.innerHTML = `✅ Tersimpan: ${logoInfo.kanan.fileName}`;
+  } else {
+    statusKanan.className = 'logo-status empty';
+    statusKanan.innerHTML = '❌ Belum ada logo';
+  }
+}
+
+function uploadLogo(side) {
+  const inputId = side === 'kiri' ? 'inputLogoKiriSave' : 'inputLogoKananSave';
+  const input = document.getElementById(inputId);
+
+  if (!input.files || !input.files[0]) {
+    showToast(`⚠️ Pilih file logo ${side} terlebih dahulu.`, 'error');
+    return;
+  }
+
+  const file = input.files[0];
+  if (file.size > 2 * 1024 * 1024) {
+    showToast('⚠️ Ukuran file maksimal 2 MB.', 'error');
+    return;
+  }
+
+  const btn = event.target;
+  const originalText = btn.innerHTML;
+  btn.innerHTML = '⏳ Mengupload...';
+  btn.disabled = true;
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const base64 = e.target.result;
+    const fileName = `logo_${side}_${Date.now()}.png`;
+
+    fetch(WEB_APP_URL, {
+      method: 'POST',
+      mode: 'cors',
+      body: JSON.stringify({
+        action: 'uploadLogo',
+        side: side,
+        base64: base64,
+        fileName: fileName
+      })
+    })
+    .then(res => res.text())
+    .then(text => {
+      const data = JSON.parse(text);
+      if (data.status === 'success') {
+        showToast(`✅ Logo ${side} berhasil disimpan ke Spreadsheet!`, 'success', 4000);
+        loadLogoInfo();
+        input.value = '';
+      } else {
+        showToast('❌ ' + data.message, 'error', 5000);
+      }
+    })
+    .catch(err => {
+      console.error('Error:', err);
+      showToast('❌ Gagal upload logo: ' + err.message, 'error', 5000);
+    })
+    .finally(() => {
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+    });
+  };
+  reader.readAsDataURL(file);
+}
+
+function deleteLogo(side) {
+  const info = logoInfo[side];
+  if (!info || !info.exists) {
+    showToast(`ℹ️ Belum ada logo ${side} yang tersimpan.`, 'info');
+    return;
+  }
+
+  if (!confirm(`Yakin ingin menghapus logo ${side}?\nFile: ${info.fileName}\n\nLogo tidak akan lagi muncul di PDF yang di-generate setelah ini.`)) return;
+
+  fetch(WEB_APP_URL, {
+    method: 'POST',
+    mode: 'cors',
+    body: JSON.stringify({ action: 'deleteLogo', side: side })
+  })
+  .then(res => res.text())
+  .then(text => {
+    const data = JSON.parse(text);
+    if (data.status === 'success') {
+      showToast(`🗑️ Logo ${side} berhasil dihapus.`, 'success', 3000);
+      loadLogoInfo();
+    } else {
+      showToast('❌ ' + data.message, 'error', 5000);
+    }
+  })
+  .catch(err => showToast('❌ Gagal menghapus logo: ' + err.message, 'error', 5000));
+}
+
+function getDriveEmbedUrl(url) {
+  if (!url) return '';
+  let match = url.match(/\/d\/([^\/\?]+)/);
+  if (match) return 'https://drive.google.com/file/d/' + match[1] + '/preview';
+  match = url.match(/[?&]id=([^&]+)/);
+  if (match) return 'https://drive.google.com/file/d/' + match[1] + '/preview';
+  return url;
+}
+
+function generatePDFGuruBK() {
+  const nis = document.getElementById('inputNISGuruBK').value.trim();
+  const nisn = document.getElementById('inputNISNGuruBK').value.trim();
+
+  if (!nis && !nisn) {
+    showToast('⚠️ Silakan masukkan NIS atau NISN siswa terlebih dahulu.', 'error');
+    return;
+  }
+
+  const btn = document.getElementById('btnGenerateGuruBK');
+  const originalText = btn.innerHTML;
+  btn.innerHTML = '⏳ Memproses...';
+  btn.disabled = true;
+
+  const logoInputKiri = document.getElementById('inputLogoHeaderKiri');
+  const logoInputKanan = document.getElementById('inputLogoHeaderKanan');
+  let logoBase64Kiri = '';
+  let logoBase64Kanan = '';
+
+  const processAndSend = () => {
+    fetch(WEB_APP_URL, {
+      method: 'POST',
+      mode: 'cors',
+      body: JSON.stringify({
+        action: 'rekap',
+        nis: nis, nisn: nisn,
+        logoBase64Kiri: logoBase64Kiri || '',
+        logoBase64Kanan: logoBase64Kanan || ''
+      })
+    })
+    .then(res => res.text())
+    .then(text => {
+      let data;
+      try { data = JSON.parse(text); } catch (e) { throw new Error('Response tidak valid dari server.'); }
+      if (data.status === 'success') {
+        currentPDFUrl = data.pdfUrl;
+        currentPDFFileName = data.fileName || 'rekap.pdf';
+        let sourceBadge = '<span class="pdf-source-badge baru">🆕 Data Aktif</span>';
+        const embedUrl = getDriveEmbedUrl(data.pdfUrl);
+        document.getElementById('pdfViewer').src = embedUrl;
+
+        let logoInfoText = '';
+        if (data.logoKiriTerpakai || data.logoKananTerpakai) {
+          logoInfoText = ' | 🖼️ Logo: ' + (data.logoKiriTerpakai ? 'Kiri✓' : '') + (data.logoKananTerpakai ? ' Kanan✓' : '');
+        }
+
+        document.getElementById('pdfTitle').innerHTML = `Rekap Pelanggaran: ${data.namaSiswa} (${data.kelas}) ${sourceBadge}`;
+        document.getElementById('pdfInfo').innerHTML = `
+          <strong>👤 Nama Siswa:</strong> ${data.namaSiswa} &nbsp;|&nbsp;
+          <strong>🏫 Kelas:</strong> ${data.kelas} &nbsp;|&nbsp;
+          <strong>📊 Total Kasus:</strong> ${data.totalKasus} pelanggaran${logoInfoText}
+        `;
+        document.getElementById('btnDownloadPDF').setAttribute('data-url', data.pdfUrl);
+        document.getElementById('pdfViewerContainer').classList.add('active');
+        showToast(`✅ PDF berhasil digenerate untuk ${data.namaSiswa}`, 'success', 4000);
+        document.getElementById('pdfViewerContainer').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        showToast('❌ ' + data.message, 'error', 5000);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      showToast('❌ ' + error.message, 'error', 5000);
+    })
+    .finally(() => {
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+    });
+  };
+
+  if (logoInputKiri.files && logoInputKiri.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      logoBase64Kiri = e.target.result.split(',')[1];
+      checkAndSend();
+    };
+    reader.readAsDataURL(logoInputKiri.files[0]);
+  } else {
+    checkAndSend();
+  }
+
+  function checkAndSend() {
+    if (logoInputKanan.files && logoInputKanan.files[0]) {
+      const readerKanan = new FileReader();
+      readerKanan.onload = function(e) {
+        logoBase64Kanan = e.target.result.split(',')[1];
+        processAndSend();
+      };
+      readerKanan.readAsDataURL(logoInputKanan.files[0]);
+    } else {
+      processAndSend();
+    }
+  }
+}
+
+function printPDF() {
+  if (!currentPDFUrl) { showToast('⚠️ Belum ada PDF yang dimuat.', 'error'); return; }
+  const printWindow = window.open(currentPDFUrl, '_blank');
+  if (!printWindow) { showToast('⚠️ Popup diblokir. Izinkan popup untuk situs ini.', 'error', 5000); return; }
+  showToast('🖨️ PDF dibuka di tab baru. Tekan Ctrl+P (atau Cmd+P di Mac) untuk mencetak.', 'info', 6000);
+}
+
+function openPDFNewTab() {
+  if (!currentPDFUrl) { showToast('⚠️ Belum ada PDF yang dimuat.', 'error'); return; }
+  window.open(currentPDFUrl, '_blank');
+}
+
+function downloadPDF() {
+  if (!currentPDFUrl) { showToast('⚠️ Belum ada PDF yang dimuat.', 'error'); return; }
+  const link = document.createElement('a');
+  link.href = currentPDFUrl;
+  link.target = '_blank';
+  link.download = currentPDFFileName || 'rekap.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  showToast('📥 Download dimulai...', 'success', 2500);
+}
+
+document.getElementById('inputNISGuruBK').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') generatePDFGuruBK();
+});
+document.getElementById('inputNISNGuruBK').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') generatePDFGuruBK();
+});
+document.getElementById('inputPasswordGuruBK').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') loginGuruBK();
+});
+document.getElementById('gurubkLoginModal').addEventListener('click', function(e) {
+  if (e.target === this) closeGuruBKLogin();
+});
+</script>
+</body>
+</html>
